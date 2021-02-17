@@ -9,7 +9,7 @@ function getTotalAccountsCount(accounts) {
 function getBooksBorrowedCount(books) {
   return books.reduce((acc, {borrows}) => {
     borrows[0].returned ? acc : ++acc;
-  , 0)};
+  }, 0);
 }
 
 function bookCountByGenre(books) {
