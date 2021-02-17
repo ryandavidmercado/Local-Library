@@ -1,5 +1,3 @@
-const bookFunctions = require("./books");
-
 function getTotalBooksCount(books) {
   return books.length;
 }
@@ -9,7 +7,9 @@ function getTotalAccountsCount(accounts) {
 }
 
 function getBooksBorrowedCount(books) {
-  return bookFunctions.partitionBooksByBorrowedStatus(books)[0].length;
+  return books.reduce((acc, {borrows}) => {
+    borrows[0].returned ? acc : ++acc;
+  , 0)};
 }
 
 function bookCountByGenre(books) {
